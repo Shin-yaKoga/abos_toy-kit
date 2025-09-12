@@ -1,0 +1,31 @@
+#!/bin/sh
+
+#APP_ARCHIVE="/var/app/$APP_NAME/app.tar.gz"
+DEST_DIR="/var/app"
+
+if [ -z "$1"  ] || [ -z "$2" ]; then
+	echo "Usage: app_extractor.sh app_name app_archive [dest_dir]"
+	exit 1
+fi
+APP_NAME=$1
+APP_ARCHIVE="$2"
+
+if [ -n "$3" ]; then
+	DEST_DIR="$3"
+else
+	echo "default dest_dir: '$DEST_DIR'"
+fi
+if [ $(echo "$DEST_DIR" | cut -c 1) != "/" ]; then
+	echo "dest_dir '$DEST_DIR' is not an absolute path"
+	exit 1
+fi
+
+if [ !  -e "$APP_ARCHIVE" ]; then
+	echo "specified application archive '$APP_ARCHIVE' is not exist"
+	exit 1
+fi
+
+MOUNT_DIR="$(podman mount $APP_NAME)"
+mkdir -p "$MOUNT_DIR$DEST_DIR"
+tar xf "$APP_ARCHIVE" -C "$MOUNT_DIR$DEST_DIR"
+podman umount $APP_NAME
