@@ -40,8 +40,8 @@ In app_file_list you must write names or relative pathes of file which you'd lik
    `make_app_archive hello_app`
 2. place the app archive at /var/app/ of ABOS.  
    `mv app.tar.gz /var/app/`
-3. place hello_app.conf at /etc/containers/ of ABOS.  
-   `cp hello_app/hello_app.conf /etc/containers/`
+3. place hello_app.conf at /etc/atmark/containers/ of ABOS.  
+   `cp hello_app/hello_app.conf /etc/atmark/containers/`
 4. create and start the container with the podman_start command of ABOS.  
    `podman_start hello_app`
 
@@ -51,7 +51,7 @@ In app_file_list you must write names or relative pathes of file which you'd lik
   - `/etc/atmark/power-utils.conf` has set up for the intermittent operation.
 See <a href="https://manual.atmark-techno.com/armadillo-iot-a9e/armadillo-iotg-a9e_product_manual_ja/ch06.html#sec.use_power_utils">the manual page</a>.
   - app archive has placed at /var/app
-  - The container's startup settings file has placed at /etc/containers/
+  - The container's startup settings file has placed at /etc/atmark/containers/
   - The application code that contained in the app archive is implemented as do following:  
     1. Does something.
     2. After a while, does self exit for triggering ABOS entering sleep.
@@ -68,3 +68,4 @@ by the prestart hook
   4. The application code does something
   5. After a while, the application code exits
   6. By the poststop hook, ABOS enters to sleep state
+
