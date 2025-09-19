@@ -45,6 +45,9 @@ In app_file_list you must write names or relative pathes of file which you'd lik
 4. create and start the container with the podman_start command of ABOS.  
    `podman_start hello_app`
 
+### [Periodic Sleeper](https://github.com/Shin-yaKoga/abos_toy-kit/tree/main/periodic_sleeper)
+The utility application running inside a container for making ABOS sleep (sleeper) and it's client application (sleeper_client_app).
+
 ## Use Cases
 ### Make the container for ABOS intermittent operation
 #### precondition
