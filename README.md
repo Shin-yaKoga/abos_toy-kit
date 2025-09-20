@@ -59,7 +59,8 @@ See <a href="https://manual.atmark-techno.com/armadillo-iot-a9e/armadillo-iotg-a
     `add_hook --stage poststop "pwu_notify" container_stop`
 #### post-condition  
   - ABOS is in the sleep state.
-  - When the wake up cause is occurred then ABOS resumes (i.e. leave the sleep state).
+  - When the wake up cause is occurred then ABOS resumes (i.e. leave the sleep state).  
+  Then the container starts again by the atmark-power-utils service.
 #### basic flow  
   1. `podman_start` creates a container from the container image and starts it
   2. Just before the container starts, the application code is deploying into that container 
